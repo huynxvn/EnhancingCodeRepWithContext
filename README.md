@@ -17,19 +17,19 @@ The structure of our source code's repository is as follows:
 
 To replicate our results, please follow the instruction as below:
 
-- Code Clone Detection
+- Code Clone Detection: Please use the folder `Classification/`
 
 ```
 bash experiment_clone.sh
 ```
 
-- Code Classification
+- Code Classification: Please use the folder `Classification/`
 
 ```
 bash experiment_class.sh
 ```
 
-- Code Summarisation
+- Code Summarisation: Please use this folder `Summarization/Task/Code-Summarization/`
 
 ```
 bash experiment_summarization.sh
