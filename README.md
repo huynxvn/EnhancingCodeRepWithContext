@@ -36,37 +36,13 @@ To replicate results of our RQ3, please use the following command:
 
 #### Human Evaluation Data
 
-- Human Evaluation result on Automated Code Summarisation:
-    - Pilot phases (in human_evaluation.zip): `human_evaluation/Pilot Study/`
+- Human Evaluation result on Automated Code Summarisation (in human_evaluation.zip):
+    - Pilot phases: `human_evaluation/Pilot Study/`
         
-    - Main Study:  (in human_evaluation.zip): `human_evaluation/Main Study/`
+    - Main Study: `human_evaluation/Main Study/`
 
     - Example:
     ![An example for Human Evaluation task in Code Summarization with Rank-Order-with-Ties questions](_img/example_Q5.png)
-    <!-- ```
-    Below is a snippet of Java code implementing a simple method. Please review it and then answer the
-    questions below.
-
-        public Chat createChat(String userJID, MessageListener listener) {
-            return createChat(userJID, null, listener);
-        }
-    
-    Ranking Tasks
-
-    Evaluation Criterion: Accuracy
-    Please rank the following summaries based on their Accuracy in representing the given method, independent
-    of Content-Adequacy and Conciseness. A rank of 1 is the highest; You may assign the same rank to multiple
-    summaries if you believe they are equal.
-    If you want to view an example of how to rank summaries, please click this link and refer to the respective
-    criteria.
-
-    a. Creates a new chat and returns it
-    b. Creates a chat with the given JID and a message listener
-    c. Creates a new chat with the specified user jid
-    d. Creates a Chat object for the specified user
-    e. Creates a new chat with the specified user JID and a message listener
-    f. Creates a chat with the given user JID and a message listener
-    ``` -->
     
 ## Citations
 
