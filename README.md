@@ -42,7 +42,7 @@ To replicate results of our RQ3, please use the following command:
     - Main Study:  (in human_evaluation.zip): `human_evaluation/Main Study/`
 
     - Example:
-    ![An example for Human Evaluation task in Code Summarization with Rank-Order-with-Ties questions](_img/example_Q5.png_.jpg)
+    ![An example for Human Evaluation task in Code Summarization with Rank-Order-with-Ties questions](_img/example_Q5.png)
     <!-- ```
     Below is a snippet of Java code implementing a simple method. Please review it and then answer the
     questions below.
