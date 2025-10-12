@@ -6,31 +6,34 @@ This repository contains the data and code for the journal paper "Enhancing Code
 
 Our data is published using Figshare, please download data from [here](https://figshare.com/s/71c3233d55c2ad91f30c) and put it into the folder data before running experiments.
 
+## Structure
+The structure of our source code's repository is as follows:
+- Classification: contains our script experimenting Code Clone Detection and Code Classification Tasks;
+- Summarization: contains our script experimenting Code Summarization Task;   
+- env.yml: contains the configuration for our enviroment. 
+
+
 ### Replicating results in the Paper
 
-To replicate results of our RQ1, please use the following command:
+To replicate our results, please follow the instruction as below:
 
 - Code Clone Detection
 
-- Code Classification
-
-- Code Summarisation
-
-To replicate results of our RQ2, please use the following command:
-
-- Code Clone Detection
+```
+bash experiment_clone.sh
+```
 
 - Code Classification
 
-- Code Summarisation
-
-To replicate results of our RQ3, please use the following command:
-
-- Code Clone Detection
-
-- Code Classification
+```
+bash experiment_class.sh
+```
 
 - Code Summarisation
+
+```
+bash experiment_summarization.sh
+```
 
 ### Supplementary Materials
 
@@ -42,9 +45,10 @@ To replicate results of our RQ3, please use the following command:
     - Main Study: `human_evaluation/Main Study/`
 
     - Example:
+    
     ![An example for Human Evaluation task in Code Summarization with Rank-Order-with-Ties questions](_img/example_Q5.png)
     
-## Citations
+## 📜 Citation
 
 Please cite the following article if you find our research including findings, datasets and tools to be useful:
 
