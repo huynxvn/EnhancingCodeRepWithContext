@@ -44,67 +44,70 @@ bash experiment_class.sh
 
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java baseline
+        $bash ./run_exp.sh java baseline
         ```
         - Code + Version History:
         
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java code_vh
+        $bash ./run_exp.sh java code_vh
         ```
 
         - Code + Call Graph:
         
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java code_cg
+        $bash ./run_exp.sh java code_cg
         ```
 
         - Code + Version History + Method Age:
         
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java code_vh_nod
+        $bash ./run_exp.sh java code_vh_nod
         ```
 
         - Code + Version History + Call Graph:
         
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java code_vh_cg
+        $bash ./run_exp.sh java code_vh_cg
         ```
 
         - Code + Call Graph + Version History:
         
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java code_cg_vh
+        $bash ./run_exp.sh java code_cg_vh
         ```
 
         - Code + Version History + Call Graph + Method Age:
         
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java code_vh_cg_nod
+        $bash ./run_exp.sh java code_vh_cg_nod
         ```
 
         - Code + Call Graph + Version History + Method Age:
         
         ```
         $cd Summarization/Task/Code-Summarization/codet5
-        $bash bash ./run_exp.sh java code_cg_vh_nod
+        $bash ./run_exp.sh java code_cg_vh_nod
         ```
 
 ### Supplementary Materials
 
 #### Human Evaluation Data
 
-- Human Evaluation result on Automated Code Summarisation is provide in Figshare(in human_evaluation.zip):
+- Human Evaluation result on Automated Code Summarisation is provide in [Figshare](https://figshare.com/s/71c3233d55c2ad91f30c)(please unzip the file human_evaluation.zip):
+
     - Pilot phases: `human_evaluation/Pilot Study/`
         
     - Main Study: `human_evaluation/Main Study/`
 
-    - Example of a Rank-Order question design (with ties, blind source) in Qualtrics:
+    - Evaluation Guidelines for annotators: `human_evaluation/SURVEY_INSTRUCTION.pdf`
+
+    - Example of a Rank-Order question design (with ties, blinded source) in Qualtrics:
     
     ![An example for Human Evaluation task in Code Summarization with Rank-Order-with-Ties questions](_img/example_Q5.png)
     
