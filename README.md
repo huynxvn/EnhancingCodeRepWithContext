@@ -29,7 +29,7 @@ bash experiment_clone.sh
 bash experiment_class.sh
 ```
 
-- Code Summarisation: we can use the respective folder (e.g. `CodeBERT`, `GraphCodeBERT`, `CodeT5`, and `PLBART`) in the folder `Summarization/Task/Code-Summarization/`. For instance, to replicate `CodeT5`'s result, we use the following bash commands for different scenarios
+- Code Summarisation: we can use the respective folder (e.g. `CodeBERT`, `GraphCodeBERT`, `CodeT5`, and `PLBART`) in the project directory at `Summarization/Task/Code-Summarization/`. For instance, to replicate `CodeT5`'s result, we use the following bash commands for different scenarios:
 
         - Without Context (baseline):
 
