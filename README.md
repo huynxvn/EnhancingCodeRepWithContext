@@ -95,7 +95,7 @@ bash experiment_class.sh
         
     - Main Study: `human_evaluation/Main Study/`
 
-    - Example:
+    - Example of a Rank-Order question design (with ties, blind source) in Qualtrics:
     
     ![An example for Human Evaluation task in Code Summarization with Rank-Order-with-Ties questions](_img/example_Q5.png)
     
@@ -109,9 +109,9 @@ Please cite the following article if you find our research including findings, d
       author={Nguyen, Huy and Treude, Christoph and Thongtanunam, Patanamon},
       year={2025},
       month=oct
-      eprint={xxxx.xxxxx},
+      eprint={2510.12082},
       archivePrefix={arXiv},
       primaryClass={cs.SE},
-      url={https://arxiv.org/abs/xxxx.xxxxx}, 
+      url={https://arxiv.org/abs/2510.12082}, 
 }
 ```
