@@ -29,11 +29,62 @@ bash experiment_clone.sh
 bash experiment_class.sh
 ```
 
-- Code Summarisation: Please use this folder `Summarization/Task/Code-Summarization/`
+- Code Summarisation: we can use the respective folder (e.g. `CodeBERT`, `GraphCodeBERT`, `CodeT5`, and `PLBART`) in the folder `Summarization/Task/Code-Summarization/`. For instance, to replicate `CodeT5`'s result, we use the following bash commands for different scenarios
 
-```
-bash experiment_summarization.sh
-```
+        - Without Context (baseline):
+
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java baseline
+        ```
+        - Code + Version History:
+        
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java code_vh
+        ```
+
+        - Code + Call Graph:
+        
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java code_cg
+        ```
+
+        - Code + Version History + Method Age:
+        
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java code_vh_nod
+        ```
+
+        - Code + Version History + Call Graph:
+        
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java code_vh_cg
+        ```
+
+        - Code + Call Graph + Version History:
+        
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java code_cg_vh
+        ```
+
+        - Code + Version History + Call Graph + Method Age:
+        
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java code_vh_cg_nod
+        ```
+
+        - Code + Call Graph + Version History + Method Age:
+        
+        ```
+        $cd Summarization/Task/Code-Summarization/codet5
+        $bash bash ./run_exp.sh java code_cg_vh_nod
+        ```
 
 ### Supplementary Materials
 
