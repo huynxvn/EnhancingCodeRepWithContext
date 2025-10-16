@@ -90,7 +90,7 @@ bash experiment_class.sh
 
 #### Human Evaluation Data
 
-- Human Evaluation result on Automated Code Summarisation (in human_evaluation.zip):
+- Human Evaluation result on Automated Code Summarisation is provide in Figshare(in human_evaluation.zip):
     - Pilot phases: `human_evaluation/Pilot Study/`
         
     - Main Study: `human_evaluation/Main Study/`
