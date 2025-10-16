@@ -4,14 +4,21 @@ This repository contains the data and code for the journal paper "Enhancing Code
 
 ### Data 
 
-Our data is published using Figshare, please download data from [here](https://figshare.com/s/71c3233d55c2ad91f30c) and put it into the folder data before running experiments.
+Our data is published using Figshare, please download data from [here](https://figshare.com/s/71c3233d55c2ad91f30c). Please unzip and then put datasets to the following folder before running experiments.
 
-## Structure
+- For Classification tasks (Code Clone Detection and Code Classification):  `Classification/data/` 
+
+- For Code Summarisation tasks:  `Summarization/Task/Code-Summarization/dataset/java/` 
+
+### Structure
+
 The structure of our source code's repository is as follows:
-- Classification: contains our script experimenting Code Clone Detection and Code Classification Tasks;
-- Summarization: contains our script experimenting Code Summarization Task;   
-- env.yml: contains the configuration for our enviroment. 
 
+- Classification: contains our script experimenting Code Clone Detection and Code Classification Tasks;
+
+- Summarization: contains our script experimenting Code Summarization Task;   
+
+- env.yml: contains the configuration for our enviroment. 
 
 ### Replicating results in the Paper
 
