@@ -99,13 +99,13 @@ bash experiment_class.sh
 
 #### Human Evaluation Data
 
-- Human Evaluation result on Automated Code Summarisation is provide in [Figshare](https://figshare.com/s/71c3233d55c2ad91f30c)(please unzip the file human_evaluation.zip):
+- Human Evaluation result on Automated Code Summarisation is provided at [figshare](https://figshare.com/s/71c3233d55c2ad91f30c)(please unzip the file human_evaluation.zip):
 
     - Pilot phases: `human_evaluation/Pilot Study/`
         
     - Main Study: `human_evaluation/Main Study/`
 
-    - Evaluation Guidelines for annotators: `human_evaluation/SURVEY_INSTRUCTION.pdf`
+    - Evaluation Guidelines for annotators: `human_evaluation/SURVEY_INSTRUCTION.pdf` (also downloadable from this repository)
 
     - Example of a Rank-Order question design (with ties, blinded source) in Qualtrics:
     
