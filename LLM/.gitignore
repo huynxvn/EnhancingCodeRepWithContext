@@ -1,0 +1,16 @@
+data/
+model/
+wandb/
+__pycache__/
+**/__pycache__/
+output/
+model_class/
+model_clone/
+model_vuln/
+output/
+wandb/
+*.log
+*.txt
+*.csv
+*.xlsx
+*.csv
