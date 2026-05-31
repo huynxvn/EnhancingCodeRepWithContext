@@ -1,0 +1,20 @@
+{
+  "classification": {
+    "codet5base": {
+      "code+vh+cg+age_shuffled": {
+        "accuracy": 0.7924528301886793,
+        "macro_precision": 0.6714876033057852,
+        "macro_recall": 0.6341219311368564,
+        "macro_f1": 0.6432246452299929,
+        "seed": 42
+      },
+      "code+vh+cg+age_shuffled_seed1234": {
+        "accuracy": 0.8050314465408805,
+        "macro_precision": 0.7048996458087368,
+        "macro_recall": 0.6576067796217049,
+        "macro_f1": 0.6678068564432201,
+        "seed": 1234
+      }
+    }
+  }
+}
