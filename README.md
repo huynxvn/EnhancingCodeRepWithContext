@@ -28,7 +28,7 @@ The full replication package is hosted across two platforms:
 | `data/` | CodeSearchNet-Java enriched with version history, call-graph, and method age | `.jsonl` | ~4.7 GB |
 | `vuln/vul4j_augmented.jsonl` | Vul4J enriched with version history, call-graph, and method age | `.jsonl` | ~8.4 MB |
 | `Human_Evaluation.zip` | Human evaluation data for code summarisation | `.csv` / `.xlsx` | — |
-| `Model_Weights.zip` | Partial fine-tuned model weights for selected configurations | `.bin` / `.pth` | — |
+| `Model_Weights.zip` | Partial fine-tuned model weights for selected best-performing configurations (see Model Weights section below) | `.bin` / `.pth` / `.safetensors` | — |
 
 Partial fine-tuned model weights are provided on Figshare for selected configurations. Training from scratch using the scripts and augmented datasets will reproduce all reported results.
 
@@ -386,6 +386,102 @@ Each record in the augmented dataset includes the original source code plus:
 - `version_history`: list of historical method versions (most-recent-first, filtered by Lizard)
 - `calling` / `called`: caller and callee method source code
 - `number_of_days` (normalised): method age in days
+
+---
+
+## Model Weights
+
+Partial fine-tuned model weights are provided on Figshare inside `Model_Weights.zip`. These cover the best-performing configuration for each task. Download and unzip to obtain the following structure:
+
+```
+Model_Weights/
+├── clone_detection/
+│   ├── graphcodebert_code_vh/              ← GraphCodeBERT + version history (F1 = 0.8718)
+│   │   ├── clone_pure_code.pth             ← baseline (code only)
+│   │   ├── clone_concat.pth                ← concatenation aggregation
+│   │   ├── clone_max_pool.pth              ← max-pooling aggregation (best)
+│   │   └── clone_diff_concat.pth           ← diff-concat aggregation
+│   └── qwen25-coder-14b-code_vh_cg_nod-4bit/   ← Qwen2.5-Coder-14B LoRA adapter (F1 = 0.8889)
+│       ├── adapter/
+│       │   ├── adapter_model.safetensors   ← LoRA fine-tuned weights
+│       │   └── adapter_config.json         ← LoRA configuration
+│       ├── adapter_model.safetensors       ← merged adapter weights
+│       ├── adapter_config.json
+│       ├── tokenizer_config.json / tokenizer.json / merges.txt
+│       ├── test_predictions.jsonl          ← model predictions on test set
+│       └── test_metrics.json               ← evaluation metrics
+│
+├── classification/
+│   └── codellama-34b-instruct-code_vh_cg_nod-4bit/   ← CodeLlama-34B LoRA adapter (Macro-F1 = 0.8319)
+│       ├── adapter/
+│       │   ├── adapter_model.safetensors   ← LoRA fine-tuned weights
+│       │   └── adapter_config.json
+│       ├── adapter_model.safetensors
+│       ├── adapter_config.json
+│       ├── tokenizer_config.json / tokenizer.json / tokenizer.model
+│       ├── test_predictions.jsonl
+│       └── test_metrics.json
+│
+└── code_summarisation/
+    └── codet5_code_vh_nod/                 ← CodeT5 + version history + method age (BLEU-4 = 21.18)
+        ├── checkpoint-best-bleu/
+        │   └── pytorch_model.bin           ← best BLEU-4 checkpoint (recommended)
+        ├── checkpoint-best-ppl/
+        │   └── pytorch_model.bin           ← best perplexity checkpoint
+        ├── checkpoint-last/
+        │   └── pytorch_model.bin           ← last training checkpoint
+        ├── prediction/                     ← test set predictions and gold references
+        ├── training_result.csv             ← per-epoch training metrics
+        └── summary.log                     ← training log
+```
+
+### Loading GraphCodeBERT weights (clone detection)
+
+The `.pth` files are standard PyTorch state dictionaries. Load using the same model class as in `Classification/transformer_versionall/clone_max_pool.py`:
+
+```python
+import torch
+model.load_state_dict(torch.load('clone_max_pool.pth'))
+```
+
+### Loading LLM LoRA adapter weights (Qwen-14B and CodeLlama-34B)
+
+> **Note:** The base model weights are **not** included in this archive. Only the LoRA adapter weights are provided (~100--200 MB), which is the standard practice for sharing fine-tuned LLMs. The base models (CodeLlama-34B-Instruct and Qwen2.5-Coder-14B-Instruct) are publicly available on HuggingFace and must be downloaded separately. To reproduce our results, download the base model, load the LoRA adapter on top using the `peft` library as shown below, then run inference using the scripts in `LLM/`.
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from peft import PeftModel
+import torch
+
+# 1. Load the base model in 4-bit quantisation
+bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16)
+
+# For Qwen-14B clone detection:
+base_model = AutoModelForCausalLM.from_pretrained(
+    "Qwen/Qwen2.5-Coder-14B-Instruct",
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+
+# 2. Load the LoRA adapter on top
+model = PeftModel.from_pretrained(base_model, "Model_Weights/clone_detection/qwen25-coder-14b-code_vh_cg_nod-4bit/adapter")
+tokenizer = AutoTokenizer.from_pretrained("Model_Weights/clone_detection/qwen25-coder-14b-code_vh_cg_nod-4bit")
+
+# For CodeLlama-34B classification, replace base model with:
+# "meta-llama/CodeLlama-34b-Instruct-hf"
+# and adapter path with:
+# "Model_Weights/classification/codellama-34b-instruct-code_vh_cg_nod-4bit/adapter"
+```
+
+### Loading CodeT5 weights (code summarisation)
+
+```python
+from transformers import T5ForConditionalGeneration, RobertaTokenizer
+
+model = T5ForConditionalGeneration.from_pretrained("Salesforce/codet5-base")
+model.load_state_dict(torch.load("Model_Weights/code_summarisation/codet5_code_vh_nod/checkpoint-best-bleu/pytorch_model.bin"))
+tokenizer = RobertaTokenizer.from_pretrained("Salesforce/codet5-base")
+```
 
 ---
 
