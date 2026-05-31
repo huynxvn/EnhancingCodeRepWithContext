@@ -19,23 +19,34 @@ The full replication package is hosted across two platforms:
 
 ### Figshare archive contents
 
-| Archive | Contents | Format |
-|---|---|---|
-| `Augmented_Dataset.zip` | SeSaMe enriched with version history, call-graph, and method age | `.pkl` (train/dev/test splits) |
-| `Augmented_Dataset.zip` | CodeSearchNet-Java enriched with version history, call-graph, and method age | `.jsonl` |
-| `Augmented_Dataset.zip` | Vul4J enriched with version history, call-graph, and method age | `.jsonl` |
-| `Human_Evaluation.zip` | Human evaluation data for code summarisation | `.csv` / `.xlsx` |
-| `Model_Weights.zip` | Partial fine-tuned model weights for selected configurations | `.bin` / `.pth` |
+| Folder / File | Contents | Format | Size |
+|---|---|---|---|
+| `clone_detection/` | SeSaMe clone detection — train/dev/test splits with corrected caller/callee context | `.pkl` | ~92 MB |
+| `classification/` | SeSaMe code classification — train/dev/test splits | `.pkl` | ~149 MB |
+| `clone_detection_vh_ablation/` | Clone detection ablation splits varying history depth (1, 3, all versions) | `.pkl` | ~95 MB |
+| `classification_vh_ablation/` | Code classification ablation splits varying history depth (1, 3, all versions) | `.pkl` | ~91 MB |
+| `data/` | CodeSearchNet-Java enriched with version history, call-graph, and method age | `.jsonl` | ~4.7 GB |
+| `vuln/vul4j_augmented.jsonl` | Vul4J enriched with version history, call-graph, and method age | `.jsonl` | ~8.4 MB |
+| `Human_Evaluation.zip` | Human evaluation data for code summarisation | `.csv` / `.xlsx` | — |
+| `Model_Weights.zip` | Partial fine-tuned model weights for selected configurations | `.bin` / `.pth` | — |
 
 Partial fine-tuned model weights are provided on Figshare for selected configurations. Training from scratch using the scripts and augmented datasets will reproduce all reported results.
 
 ### Data placement after download
 
-After downloading and unzipping the Figshare archive, place the datasets as follows:
+After downloading `Dataset.zip` from Figshare and unzipping it, place each folder/file as follows:
 
-- **Classification tasks** (clone detection, code classification): `Classification/data/`
-- **Code summarisation**: `Summarization/Task/Code-Summarization/dataset/java/`
-- **LLM experiments**: `LLM/data/` (see subfolder structure in [`LLM/README.md`](LLM/README.md))
+| Item in `Dataset.zip` | Place at |
+|---|---|
+| `clone_detection/` | `Classification/data/clone_detection/` |
+| `classification/` | `Classification/data/classification/` |
+| `clone_detection_vh_ablation/` | `Classification/data/clone_detection_vh_ablation/` |
+| `classification_vh_ablation/` | `Classification/data/classification_vh_ablation/` |
+| `data/train.jsonl`, `data/valid.jsonl`, `data/test.jsonl` | `Summarization/Task/Code-Summarization/dataset/java/` (copy the files, not the folder) |
+| `data/train.jsonl`, `data/valid.jsonl`, `data/test.jsonl` | `LLM/data/data/` (copy again for LLM summarisation experiments) |
+| `vuln/vul4j_augmented.jsonl` | `LLM/data/vuln/vul4j_augmented.jsonl` |
+| `clone_detection/` | `LLM/data/clone_detection/` (copy again for LLM clone detection experiments) |
+| `classification/` | `LLM/data/classification/` (copy again for LLM classification experiments) |
 
 ---
 
