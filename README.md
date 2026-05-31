@@ -13,9 +13,10 @@ This repository contains the replication package for the paper:
 The full replication package is hosted across two platforms:
 
 - **Figshare** – augmented datasets, human evaluation data, and partial model weights  
-  Current archive: https://figshare.com/s/71c3233d55c2ad91f30c  
-  DOI: `[TO BE ADDED AFTER FIGSHARE UPLOAD]`
-- **GitHub** (this repository) – all mining scripts, model training and evaluation scripts, and LLM experiment code
+  Archive: https://figshare.com/articles/dataset/_/30296542  
+  DOI: `https://doi.org/10.6084/m9.figshare.30296542`
+- **GitHub** (this repository) – all mining scripts, model training and evaluation scripts, and LLM experiment code  
+  Repository: https://github.com/huynxvn/EnhancingCodeRepWithContext
 
 ### Figshare archive contents
 
@@ -23,8 +24,8 @@ The full replication package is hosted across two platforms:
 |---|---|---|---|
 | `clone_detection/` | SeSaMe clone detection — train/dev/test splits with corrected caller/callee context | `.pkl` | ~92 MB |
 | `classification/` | SeSaMe code classification — train/dev/test splits | `.pkl` | ~149 MB |
-| `clone_detection_vh_ablation/` | Clone detection ablation splits varying history depth (1, 3, all versions) | `.pkl` | ~95 MB |
-| `classification_vh_ablation/` | Code classification ablation splits varying history depth (1, 3, all versions) | `.pkl` | ~91 MB |
+| `clone_detection_vh_ablation/` | Clone detection ablation splits varying history depth (1, 3, all versions) — added in response to Reviewer 2 Major Concern 3 (history depth ablation, Section 5.3) | `.pkl` | ~95 MB |
+| `classification_vh_ablation/` | Code classification ablation splits varying history depth (1, 3, all versions) — added in response to Reviewer 2 Major Concern 3 (history depth ablation, Section 5.3) | `.pkl` | ~91 MB |
 | `data/` | CodeSearchNet-Java enriched with version history, call-graph, and method age | `.jsonl` | ~4.7 GB |
 | `vuln/vul4j_augmented.jsonl` | Vul4J enriched with version history, call-graph, and method age | `.jsonl` | ~8.4 MB |
 | `Human_Evaluation.zip` | Human evaluation data for code summarisation | `.csv` / `.xlsx` | — |
@@ -133,7 +134,7 @@ The LLM scripts use 4-bit / 8-bit quantisation via `bitsandbytes` and optional L
 
 ## Context Mining Pipeline
 
-The augmented datasets are already provided on Figshare (DOI: `[TO BE ADDED]`). Follow these steps only if you need to re-mine context from scratch or extend to new repositories.
+The augmented datasets are already provided on Figshare (DOI: `https://doi.org/10.6084/m9.figshare.30296542`). Follow these steps only if you need to re-mine context from scratch or extend to new repositories.
 
 ### Prerequisites
 

@@ -218,6 +218,6 @@ data/
     └── test.jsonl
 ```
 
-The augmented `.jsonl` and `.pkl` files are available on Figshare (DOI: `[TO BE ADDED]`). Place them in the corresponding subfolders before running scripts.
+The augmented `.jsonl` and `.pkl` files are available on Figshare (DOI: https://doi.org/10.6084/m9.figshare.30296542). Place them in the corresponding subfolders before running scripts.
 
 **Note on Vul4J data:** The Vul4J augmented dataset is prepared during the LLM data pipeline stage. Version history and call-graph context for Vul4J methods are extracted and merged into the `.jsonl` files distributed on Figshare. The mining scripts in `Classification/mining/` target SeSaMe and CodeSearchNet-Java; Vul4J context is handled separately at the dataset preparation stage.
