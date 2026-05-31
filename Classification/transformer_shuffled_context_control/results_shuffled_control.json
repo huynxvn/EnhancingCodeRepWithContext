@@ -1,0 +1,20 @@
+{
+  "classification": {
+    "codebert": {
+      "code+vh+cg+age_shuffled": {
+        "accuracy": 0.7169811320754716,
+        "macro_precision": 0.5739234449760766,
+        "macro_recall": 0.5352436535272356,
+        "macro_f1": 0.5411190235789166,
+        "seed": 42
+      },
+      "code+vh+cg+age_shuffled_seed1234": {
+        "accuracy": 0.6792452830188679,
+        "macro_precision": 0.458008658008658,
+        "macro_recall": 0.43603428081040024,
+        "macro_f1": 0.41954820632575,
+        "seed": 1234
+      }
+    }
+  }
+}

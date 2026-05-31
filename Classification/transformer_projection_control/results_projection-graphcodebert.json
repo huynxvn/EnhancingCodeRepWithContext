@@ -1,0 +1,39 @@
+{
+  "clone_detection": {
+    "graphcodebert": {
+      "code+vh_projection": {
+        "precision": 0.6875,
+        "recall": 0.88,
+        "f1": 0.7719298245614036
+      },
+      "code+cg_projection": {
+        "precision": 0.95,
+        "recall": 0.76,
+        "f1": 0.8444444444444444
+      }
+    },
+    "codebert": {
+      "code+vh+cg_projection": {
+        "precision": 0.7916666666666666,
+        "recall": 0.76,
+        "f1": 0.7755102040816326
+      }
+    }
+  },
+  "classification": {
+    "graphcodebert": {
+      "code+vh_projection": {
+        "accuracy": 0.8301886792452831,
+        "macro_f1": 0.8075977907464327
+      },
+      "code+cg_projection": {
+        "accuracy": 0.7547169811320755,
+        "macro_f1": 0.6586936978648208
+      },
+      "code+vh+cg_projection": {
+        "accuracy": 0.8238993710691824,
+        "macro_f1": 0.7426426228063804
+      }
+    }
+  }
+}
