@@ -13,23 +13,24 @@ This repository contains the replication package for the paper:
 The full replication package is hosted across two platforms:
 
 - **Figshare** – augmented datasets, human evaluation data, and partial model weights  
-  Archive: https://figshare.com/articles/dataset/_/30296542  
-  DOI: `https://doi.org/10.6084/m9.figshare.30296542`
+  Archive: https://figshare.com/s/71c3233d55c2ad91f30c
 - **GitHub** (this repository) – all mining scripts, model training and evaluation scripts, and LLM experiment code  
   Repository: https://github.com/huynxvn/EnhancingCodeRepWithContext
 
 ### Figshare archive contents
 
-| Folder / File | Contents | Format | Size |
+| Archive / Folder / File | Contents | Format | Size |
 |---|---|---|---|
-| `clone_detection/` | SeSaMe clone detection — train/dev/test splits with corrected caller/callee context | `.pkl` | ~92 MB |
-| `classification/` | SeSaMe code classification — train/dev/test splits | `.pkl` | ~149 MB |
-| `clone_detection_vh_ablation/` | Clone detection ablation splits varying history depth (1, 3, all versions) — added in response to Reviewer 2 Major Concern 3 (history depth ablation, Section 5.3) | `.pkl` | ~95 MB |
-| `classification_vh_ablation/` | Code classification ablation splits varying history depth (1, 3, all versions) — added in response to Reviewer 2 Major Concern 3 (history depth ablation, Section 5.3) | `.pkl` | ~91 MB |
-| `data/` | CodeSearchNet-Java enriched with version history, call-graph, and method age | `.jsonl` | ~4.7 GB |
-| `vuln/vul4j_augmented.jsonl` | Vul4J enriched with version history, call-graph, and method age | `.jsonl` | ~8.4 MB |
-| `Human_Evaluation.zip` | Human evaluation data for code summarisation | `.csv` / `.xlsx` | — |
-| `Model_Weights.zip` | Partial fine-tuned model weights for selected best-performing configurations (see Model Weights section below) | `.bin` / `.pth` / `.safetensors` | — |
+| **`Dataset.zip`** | All augmented datasets (see breakdown below) | `.pkl` / `.jsonl` | **345.47 MB** |
+| `clone_detection/` | SeSaMe clone detection — train/dev/test splits with version history, caller/callee, and method age context | `.pkl` | — |
+| `classification/` | SeSaMe code classification — train/dev/test splits with version history, caller/callee, and method age context | `.pkl` | — |
+| `clone_detection_vh_ablation/` | Clone detection ablation splits varying history depth (1, 3, all versions) — added in response to Reviewer 2 Major Concern 3 (history depth ablation, Section 5.3) | `.pkl` | — |
+| `classification_vh_ablation/` | Code classification ablation splits varying history depth (1, 3, all versions) — added in response to Reviewer 2 Major Concern 3 (history depth ablation, Section 5.3) | `.pkl` | — |
+| `data/` | CodeSearchNet-Java enriched with version history, call-graph, and method age | `.jsonl` | — |
+| `vuln/vul4j_augmented.jsonl` | Vul4J enriched with version history, call-graph, and method age | `.jsonl` | — |
+| **`Human_Evaluation.zip`** | Human evaluation data for code summarisation | `.csv` / `.xlsx` | **226.45 kB** |
+| **`SourceCode.zip`** | Mining scripts and model training/evaluation code | `.py` / `.sh` | **7.83 MB** |
+| **`Model_Weights.zip`** | Partial fine-tuned model weights for selected best-performing configurations | `.bin` / `.pth` / `.safetensors` | **5.27 GB** |
 
 Partial fine-tuned model weights are provided on Figshare for selected configurations. Training from scratch using the scripts and augmented datasets will reproduce all reported results.
 
@@ -66,8 +67,8 @@ EnhancingCodeRepWithContext/           ← this repository
 │   ├── global_config.py               ← shared path configuration
 │   ├── tree.py / utils.py             ← shared utilities
 │   ├── astnn_*/                       ← ASTNN variants (versionall, callgraph, numofdays, …)
-│   ├── transformer_*/                 ← CodeBERT / GraphCodeBERT / CodeBERTa variants
-│   ├── codet5_*/                      ← CodeT5 / CodeT5+ variants
+│   ├── transformer_*/                 ← CodeBERT / GraphCodeBERT variants
+│   ├── codet5_*/                      ← CodeT5 variants
 │   │
 │   ├── transformer_shuffled_context_control/   ← Section 6.1: shuffled-context control (transformer)
 │   ├── codet5_shuffled_context_control/        ← Section 6.1: shuffled-context control (CodeT5)
@@ -134,7 +135,7 @@ The LLM scripts use 4-bit / 8-bit quantisation via `bitsandbytes` and optional L
 
 ## Context Mining Pipeline
 
-The augmented datasets are already provided on Figshare (DOI: `https://doi.org/10.6084/m9.figshare.30296542`). Follow these steps only if you need to re-mine context from scratch or extend to new repositories.
+The augmented datasets are already provided on Figshare (https://figshare.com/s/71c3233d55c2ad91f30c). Follow these steps only if you need to re-mine context from scratch or extend to new repositories.
 
 ### Prerequisites
 
@@ -215,7 +216,7 @@ All DL experiments are in `Classification/` and follow the same naming conventio
 ```
 
 Where:
-- **model family**: `transformer` (CodeBERT, GraphCodeBERT, CodeBERTa), `codet5` (CodeT5, CodeT5+), `astnn`
+- **model family**: `transformer` (CodeBERT, GraphCodeBERT), `codet5` (CodeT5), `plbart` (PLBART — summarisation only, see [Running Summarisation Experiments](#running-summarisation-experiments)), `astnn`
 - **context combination**: `versionall`, `callgraph`, `versionall_callgraph`, `versionall_callgraph_numofdays`, etc.
 - **task**: `clone` (clone detection), `class` (code classification)
 - **aggregation**: `pure_code` (baseline), `concat`, `max_pool`, `diff_concat`
@@ -238,7 +239,7 @@ python -u astnn_versionall_callgraph_numofdays/clone_diff_concat.py
 bash experiment_all.sh > log.txt
 ```
 
-Supported `--model` values for transformer/codet5 families: `codebert`, `graphcodebert`, `codeberta`, `codet5base`, `codet5p110membedding`.
+Supported `--model` values: `codebert`, `graphcodebert` (transformer family); `codet5base` (codet5 family); `plbart` (summarisation only).
 
 Results are written to `result.txt`; training logs to `log.txt`.
 
