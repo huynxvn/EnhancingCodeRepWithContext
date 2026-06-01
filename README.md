@@ -85,7 +85,7 @@ EnhancingCodeRepWithContext/           ← this repository
 │
 ├── Summarization/                     ← Code summarisation models
 │   ├── PLBART/                        ← PLBART fine-tuning and evaluation
-│   └── Task/Code-Summarization/       ← CodeBERT / GraphCodeBERT / CodeT5 summarisation
+│   └── Task/Code-Summarization/       ← CodeBERT / GraphCodeBERT / CodeT5 / PLBART summarisation
 │
 ├── LLM/                               ← LLM experiment code
 │   ├── models.py                      ← model registry and configurations
@@ -130,7 +130,7 @@ Key dependencies: Python 3.9, PyTorch 2.1.0 (CUDA 12.1), Transformers 4.38.2, ja
 pip install torch transformers peft bitsandbytes accelerate wandb
 ```
 
-The LLM scripts use 4-bit / 8-bit quantisation via `bitsandbytes` and optional LoRA fine-tuning via `peft`. See [`LLM/README.md`](LLM/README.md) for full LLM usage instructions.
+The LLM scripts use 4-bit quantisation via `bitsandbytes` and optional LoRA fine-tuning via `peft`. See [`LLM/README.md`](LLM/README.md) for full LLM usage instructions.
 
 ---
 
@@ -240,7 +240,7 @@ python -u astnn_versionall_callgraph_numofdays/clone_diff_concat.py
 bash experiment_all.sh > log.txt
 ```
 
-Supported `--model` values: `codebert`, `graphcodebert` (transformer family); `codet5base` (codet5 family); `plbart` (summarisation only).
+Supported `--model` values: `codebert`, `graphcodebert` (transformer family); `codet5base` (codet5 family).
 
 Results are written to `result.txt`; training logs to `log.txt`.
 
@@ -524,7 +524,7 @@ A preprint is available on arXiv:
 
 ```bibtex
 @misc{nguyen2025enhancingneuralcoderep,
-  title         = {Enhancing Neural Code Representation With Additional Context},
+  title         = {Enhancing Neural Code Representation with Additional Context},
   author        = {Nguyen, Huy and Treude, Christoph and Thongtanunam, Patanamon},
   year          = {2025},
   month         = oct,
