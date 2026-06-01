@@ -1,6 +1,10 @@
-# LLM Experiments
+# LLM — Large Language Model Experiments
 
-This folder contains the code for all Large Language Model (LLM) experiments reported in the paper. It covers four SE tasks evaluated under two settings (prompt-based context injection and LoRA fine-tuning), using seven LLM configurations.
+This folder contains all source code for LLM experiments reported in the paper. Four software engineering tasks are evaluated under two settings — **prompt-based context injection** (zero-shot) and **LoRA fine-tuning** — using seven LLM configurations across three model families: CodeLlama, DeepSeek-Coder, and Qwen2.5-Coder.
+
+For deep learning experiments with CodeBERT, GraphCodeBERT, CodeT5, and ASTNN, see [`Classification/`](../Classification/).  
+For **Code Summarisation with task-specific models** (CodeBERT, GraphCodeBERT, CodeT5, PLBART), see [`Summarization/`](../Summarization/) and its [`README`](../Summarization/README.md).  
+For the full replication package overview, see the [root README](../README.md).
 
 ---
 
@@ -16,7 +20,7 @@ This folder contains the code for all Large Language Model (LLM) experiments rep
 | `qwen25-coder-7b` | Qwen2.5-Coder-7B | 7B | Decoder-only |
 | `qwen25-coder-14b` | Qwen2.5-Coder-14B | 14B | Decoder-only |
 
-Additional models in the registry (not reported in the main paper): `deepseek-coder-1.3b-instruct`, `deepseek-coder-33b-instruct`, `qwen25-coder-32b`, `codellama-34b-instruct`, `starcoder2-3b`, `starcoder2-7b`, `codegemma-2b`, `codegemma-7b`, `phi-3.5-mini`.
+Additional models in the registry (not reported in the main paper): `deepseek-coder-1.3b-instruct`, `deepseek-coder-33b-instruct`, `qwen25-coder-32b`, `starcoder2-3b`, `starcoder2-7b`, `codegemma-2b`, `codegemma-7b`, `phi-3.5-mini`.
 
 ---
 
@@ -115,7 +119,7 @@ python inference_vuln.py \
 
 ## Setting 2: LoRA Fine-Tuning
 
-Fine-tuning uses QLoRA (4-bit or 8-bit quantisation + LoRA adapters via `peft`). Training runs for up to 10 epochs with early stopping (patience = 3). WandB logging is enabled by default.
+Fine-tuning uses QLoRA (4-bit quantisation + LoRA adapters via `peft`). Training runs for up to 10 epochs with early stopping (patience = 3). WandB logging is enabled by default.
 
 ### Code Summarisation
 
@@ -218,6 +222,21 @@ data/
     └── test.jsonl
 ```
 
-The augmented `.jsonl` and `.pkl` files are available on Figshare (DOI: https://doi.org/10.6084/m9.figshare.30296542). Place them in the corresponding subfolders before running scripts.
+The augmented `.jsonl` and `.pkl` files are available on Figshare (https://figshare.com/s/71c3233d55c2ad91f30c). Place them in the corresponding subfolders before running scripts.
 
 **Note on Vul4J data:** The Vul4J augmented dataset is prepared during the LLM data pipeline stage. Version history and call-graph context for Vul4J methods are extracted and merged into the `.jsonl` files distributed on Figshare. The mining scripts in `Classification/mining/` target SeSaMe and CodeSearchNet-Java; Vul4J context is handled separately at the dataset preparation stage.
+
+---
+
+## Citation
+
+```bibtex
+@article{nguyen2025enhancing,
+  title     = {Enhancing Neural Code Representation with Additional Context},
+  author    = {Nguyen, Huy and Thongtanunam, Patanamon and Treude, Christoph},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2025}
+}
+```
+
+Preprint: https://arxiv.org/abs/2510.12082
