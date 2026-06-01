@@ -4,7 +4,8 @@ This repository contains the replication package for the paper:
 
 > **"Enhancing Neural Code Representation with Additional Context"**  
 > Huy Nguyen, Patanamon Thongtanunam, Christoph Treude  
-> *Transactions on Software Engineering and Methodology (TOSEM), 2025*
+> *Under revision at ACM Transactions on Software Engineering and Methodology (TOSEM)*  
+> Preprint: https://arxiv.org/abs/2510.12082
 
 ---
 
